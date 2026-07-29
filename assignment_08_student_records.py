@@ -89,4 +89,49 @@
 # =============================================================================
 # YOUR CODE BELOW — remove the # symbols from the scaffold and fill it in
 # =============================================================================
+def addstudent(students):
+    name = input("Student name: ")
+    student_id = input("Student ID")
+    num_scores = int(input("How many  scores? "))
+    scores = []
+    for i in range (num_scores):
+        score = float(input(f"Enter score{i + 1} "))
+        scores.append(score)
+    student = {
+        "name": name,
+        "id" : student_id,
+        "scores" : scores
+    }
+    students.append(student)
+    print(f'Student"{name}" added successfully. ')
+    return
+
+def displayAllStudents(students):
+    if len(student) == 0:
+        print("No students have been added yet.")
+
+    print(f"{'Name':<15} {'ID':<12} {'Scores':<20} {'Average':<10}")
+    print("-" * 60)
+
+def calculateAverageScore(students):
+    student_id = input("Enter student ID: ")
+    for student in students:
+        id student["id"] == student_id:
+        average_score = sum(student["scores"]) / len(student["scores"])
+        print(f"{student['name']}'s average score: {average_score:.2f}")
+        return
+    print("Error: student ID not foound")
+
+    student = []
+
+    while True:
+        print("="*33)
+        print("STUDENT RECORD MENU")
+        print("="*33)
+        print("1. Add student")
+        print("2. Display all students")
+        print("3. Calculate average score")
+        print("4. Quit")
+        choice = input("Enter your choice (1-4)")
+
 
