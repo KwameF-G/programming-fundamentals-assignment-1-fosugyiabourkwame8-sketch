@@ -91,47 +91,74 @@
 # =============================================================================
 def addstudent(students):
     name = input("Student name: ")
-    student_id = input("Student ID")
-    num_scores = int(input("How many  scores? "))
+    student_id = int(input("Student ID: "))
+    num_scores = int(input("How many scores? "))
     scores = []
-    for i in range (num_scores):
-        score = float(input(f"Enter score{i + 1} "))
+
+    for i in range(num_scores):
+        score = float(input(f"Enter score {i + 1}: "))
         scores.append(score)
+
     student = {
         "name": name,
-        "id" : student_id,
-        "scores" : scores
+        "id": student_id,
+        "scores": scores
     }
+
     students.append(student)
-    print(f'Student"{name}" added successfully. ')
-    return
+    print(f'Student "{name}" added successfully.')
+
 
 def displayAllStudents(students):
-    if len(student) == 0:
+    if len(students) == 0:
         print("No students have been added yet.")
+        return
 
     print(f"{'Name':<15} {'ID':<12} {'Scores':<20} {'Average':<10}")
     print("-" * 60)
 
-def calculateAverageScore(students):
-    student_id = input("Enter student ID: ")
     for student in students:
-        id student["id"] == student_id:
         average_score = sum(student["scores"]) / len(student["scores"])
-        print(f"{student['name']}'s average score: {average_score:.2f}")
-        return
-    print("Error: student ID not foound")
+        score_text = ", ".join(str(score) for score in student["scores"])
+        print(f"{student['name']:<15} {student['id']:<12} {score_text:<20} {average_score:.2f}")
 
-    student = []
+    print("-" * 60)
 
-    while True:
-        print("="*33)
-        print("STUDENT RECORD MENU")
-        print("="*33)
-        print("1. Add student")
-        print("2. Display all students")
-        print("3. Calculate average score")
-        print("4. Quit")
-        choice = input("Enter your choice (1-4)")
+
+def calculateAverageScore(students):
+    student_id = int(input("Enter student ID: "))
+
+    for student in students:
+        if student["id"] == student_id:
+            average_score = sum(student["scores"]) / len(student["scores"])
+            print(f"{student['name']}'s average score: {average_score:.2f}")
+            return
+
+    print("Error: student ID not found")
+
+
+students = []
+
+while True:
+    print("=" * 33)
+    print("STUDENT RECORD MENU")
+    print("=" * 33)
+    print("1. Add student")
+    print("2. Display all students")
+    print("3. Calculate average score")
+    print("4. Quit")
+    choice = input("Enter your choice (1-4): ")
+
+    if choice == "1":
+        addstudent(students)
+    elif choice == "2":
+        displayAllStudents(students)
+    elif choice == "3":
+        calculateAverageScore(students)
+    elif choice == "4":
+        print("Program terminated.")
+        break
+    else:
+        print("Invalid menu choice. Please enter 1, 2, 3, or 4.")
 
 
